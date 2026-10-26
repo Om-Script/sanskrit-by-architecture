@@ -5,13 +5,17 @@
 [![Book Trim](https://img.shields.io/badge/Amazon%20KDP-7x10%20Print%20Ready-orange.svg)](#)
 [![Scala 3](https://img.shields.io/badge/Language-Scala%203-red.svg)](https://www.scala-lang.org/)
 [![Python 3](https://img.shields.io/badge/Reader-Python%203.9%2B-blue.svg)](https://www.python.org/)
-[![Errata Status](https://img.shields.io/badge/Errata-Active%20Tracking-green.svg)](ERRATA.md)
+[![Errata Status](https://img.shields.io/badge/Errata-Active%20Tracking-green.svg)](https://om-script.github.io/sanskrit-by-architecture/)
+[![Discussions](https://img.shields.io/badge/Community-GitHub%20Discussions-blueviolet.svg)](https://github.com/om-script/sanskrit-by-architecture/discussions)
 
 ---
 
 ## Overview
 
 This repository is the official open-source companion codebase and errata tracker for the book **"Sanskrit by Architecture: Decoding the Rāmāyaṇa"**.
+
+- 🌐 **Live Errata Desk & Addenda:** [om-script.github.io/sanskrit-by-architecture](https://om-script.github.io/sanskrit-by-architecture/)
+- 💬 **Reader Q&A & Verse Discussions:** [GitHub Discussions](https://github.com/om-script/sanskrit-by-architecture/discussions)
 
 Instead of memorizing 800 pages of 19th-century philological tables, this book approaches Classical Sanskrit through the lens of modern software engineering:
 - **Pāṇini's Grammar as a Compiler:** Proving that the 4th-century BCE *Aṣṭādhyāyī* is a pure functional term-rewriting engine equivalent to Backus-Naur Form (BNF).
@@ -24,7 +28,8 @@ Instead of memorizing 800 pages of 19th-century philological tables, this book a
 ## Repository Structure
 
 ```
-├── ERRATA.md                     # Live errata, typos, and technical updates
+├── docs/index.html               # Live Errata Desk & Companion Web App
+├── ERRATA.md                     # Raw markdown errata registry
 ├── code/
 │   ├── SanskritEngine.scala      # Scala 3 functional compiler models
 │   ├── static_memory_loader.py   # Python dictionary & memory loader
@@ -54,11 +59,10 @@ python code/static_memory_loader.py
 
 ---
 
-## Errata & Community Reporting
+## Community Discussions & Errata Reporting
 
-Found a typo, an unhandled Sandhi split, or an unclear derivation?  
-Please check [ERRATA.md](ERRATA.md) or open an issue:
-- [Submit Errata / Typo Report](https://github.com/om-script/sanskrit-by-architecture/issues)
+- **Have a question about a verse or grammar rule?** Join the community in [GitHub Discussions](https://github.com/om-script/sanskrit-by-architecture/discussions) to ask questions, share exercise solutions, and compare notes.
+- **Found a printed typo or unhandled Sandhi split?** Check the [Live Errata Desk](https://om-script.github.io/sanskrit-by-architecture/) or submit an issue directly on [GitHub Issues](https://github.com/om-script/sanskrit-by-architecture/issues).
 
 ---
 

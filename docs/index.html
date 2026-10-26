@@ -159,6 +159,28 @@
       box-shadow: var(--shadow-glow);
     }
 
+    .btn-discussions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--border-glow);
+      color: var(--accent-saffron);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-discussions:hover {
+      background: rgba(245, 158, 11, 0.22);
+      border-color: var(--accent-saffron);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-1px);
+    }
+
     /* Hero */
     .hero {
       padding: 48px 0 32px 0;
@@ -555,6 +577,48 @@
       border-color: rgba(255, 255, 255, 0.2);
     }
 
+    /* Community Discussions Banner */
+    .community-banner {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(6, 182, 212, 0.08));
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .community-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .community-text strong {
+      color: #fff;
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .community-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .community-text a {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .community-text a:hover {
+      color: #fff;
+    }
+
     /* Toolchain Box */
     .toolchain-grid {
       display: grid;
@@ -658,11 +722,17 @@
         </div>
       </a>
       <div class="header-links">
+        <a href="https://github.com/om-script/sanskrit-by-architecture/discussions" target="_blank" rel="noopener" class="btn-discussions">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+          </svg>
+          Reader Discussions
+        </a>
         <a href="https://github.com/om-script/sanskrit-by-architecture" target="_blank" rel="noopener" class="btn-github">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
           </svg>
-          GitHub Repository
+          Repository
         </a>
       </div>
     </div>
@@ -818,6 +888,19 @@
         </div>
       </div>
 
+      <!-- Community Discussions Callout -->
+      <div class="community-banner">
+        <div class="community-icon">💬</div>
+        <div class="community-text">
+          <strong>Looking for Conceptual Q&amp;A or Reading Exercises?</strong>
+          <p>
+            If you have questions about verse syntax, Sandhi rules, or want to discuss exercises with other readers, join the conversation in 
+            <a href="https://github.com/om-script/sanskrit-by-architecture/discussions" target="_blank" rel="noopener">GitHub Discussions ➔</a>. 
+            Use the form below exclusively for reporting confirmed typographical or technical errata in the printed book.
+          </p>
+        </div>
+      </div>
+
       <form id="errataForm" onsubmit="event.preventDefault(); submitToGitHub();">
         <div class="form-grid">
           <div class="form-group">
@@ -936,7 +1019,9 @@
         <strong>Sanskrit by Architecture: Decoding the Rāmāyaṇa</strong> — © 2026 Timothy A. George. All rights reserved.
       </p>
       <p style="margin-top: 6px;">
-        Maintained on <a href="https://github.com/om-script/sanskrit-by-architecture" target="_blank" rel="noopener">GitHub</a> • Printed via Amazon KDP (7" × 10")
+        Maintained on <a href="https://github.com/om-script/sanskrit-by-architecture" target="_blank" rel="noopener">GitHub</a> • 
+        Join <a href="https://github.com/om-script/sanskrit-by-architecture/discussions" target="_blank" rel="noopener">Reader Discussions</a> • 
+        Printed via Amazon KDP (7" × 10")
       </p>
     </div>
   </footer>
@@ -957,28 +1042,24 @@
       navigator.clipboard.writeText(txt).then(() => showToast("Command copied!"));
     }
 
+    let currentCategory = 'all';
+
     function filterTable() {
       const q = document.getElementById('searchInput').value.toLowerCase();
-      const activeBtn = document.querySelector('.filter-btn.active');
-      const cat = activeBtn ? activeBtn.getAttribute('data-cat') || 'all' : 'all';
-
       const rows = document.querySelectorAll('#errataTable tbody tr');
       rows.forEach(r => {
         const text = r.innerText.toLowerCase();
         const rowCat = r.getAttribute('data-category');
         const matchSearch = text.includes(q);
-        const matchCat = (cat === 'all' || rowCat === cat);
+        const matchCat = (currentCategory === 'all' || rowCat === currentCategory);
         r.style.display = (matchSearch && matchCat) ? '' : 'none';
       });
     }
 
     function setFilter(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('active');
-        b.removeAttribute('data-cat');
-      });
+      currentCategory = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      btn.setAttribute('data-cat', cat);
       filterTable();
     }
 
