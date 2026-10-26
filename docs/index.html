@@ -238,6 +238,165 @@
       color: var(--text-main);
     }
 
+    /* 3D Cover & Full Wrap Suite */
+    .cover-suite-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 28px 0 16px 0;
+    }
+
+    .cover-tabs {
+      display: inline-flex;
+      gap: 8px;
+      margin-bottom: 22px;
+      background: rgba(13, 18, 29, 0.9);
+      padding: 5px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .cover-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .cover-tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cover-tab-btn.active {
+      color: #07090e;
+      background: var(--accent-saffron);
+      box-shadow: 0 0 18px var(--accent-saffron-glow);
+    }
+
+    .cover-view-panel {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      animation: fadeInCover 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cover-view-panel.active {
+      display: flex;
+    }
+
+    @keyframes fadeInCover {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .cover-card-glow {
+      position: relative;
+      border-radius: var(--radius-md);
+      padding: 6px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.45), rgba(139, 92, 246, 0.35), rgba(6, 182, 212, 0.25));
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(245, 158, 11, 0.25);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+
+    .cover-card-glow:hover {
+      transform: translateY(-6px) rotateY(-2deg) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 55px rgba(245, 158, 11, 0.4);
+    }
+
+    .cover-img {
+      display: block;
+      width: 270px;
+      max-width: 85vw;
+      height: auto;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .wrap-card-glow {
+      position: relative;
+      border-radius: var(--radius-md);
+      padding: 6px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.45), rgba(139, 92, 246, 0.35), rgba(6, 182, 212, 0.25));
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 40px rgba(245, 158, 11, 0.25);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .wrap-card-glow:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 30px 65px rgba(0, 0, 0, 0.85), 0 0 50px rgba(245, 158, 11, 0.35);
+    }
+
+    .wrap-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .cover-caption {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-family: var(--font-mono);
+      background: rgba(13, 18, 29, 0.75);
+      padding: 6px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+      max-width: 90%;
+    }
+
+    .cover-specs-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .spec-pill {
+      font-size: 0.78rem;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+    }
+
+    .spec-link {
+      font-size: 0.78rem;
+      color: var(--accent-saffron);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 4px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .spec-link:hover {
+      background: var(--accent-saffron);
+      color: #07090e;
+    }
+
     /* Quick Stats Bar */
     .stats-grid {
       display: grid;
@@ -759,6 +918,48 @@
         <span>•</span>
         <span><strong>Current Master:</strong> v1.1 LTS</span>
       </div>
+
+      <!-- 3D Book Cover & Full Wrap Showcase -->
+      <div class="cover-suite-container">
+        <!-- Interactive Mode Tabs -->
+        <div class="cover-tabs">
+          <button class="cover-tab-btn active" onclick="switchCoverView('front')">
+            <span>📖</span> Front Cover (3D Edition)
+          </button>
+          <button class="cover-tab-btn" onclick="switchCoverView('wrap')">
+            <span>📜</span> Full Wrap Jacket (Print Spread)
+          </button>
+        </div>
+
+        <!-- Front Cover View -->
+        <div id="cover-view-front" class="cover-view-panel active">
+          <div class="cover-card-glow">
+            <img src="cover_final.jpg" alt="Sanskrit by Architecture Front Cover" class="cover-img">
+          </div>
+          <div class="cover-caption">
+            Cosmic Kodaṇḍa-Rāma • Kaṭha Upaniṣad Sandhi Inscription • Solar Kirīṭa-mukuṭa
+          </div>
+        </div>
+
+        <!-- Full Wrap Jacket View -->
+        <div id="cover-view-wrap" class="cover-view-panel">
+          <div class="wrap-card-glow">
+            <img src="Ramayana_Full_Wrap.jpg" alt="Sanskrit by Architecture Full Wrap Print Jacket" class="wrap-img">
+          </div>
+          <div class="cover-caption">
+            Amazon KDP 7" × 10" Full Wrap Spread • Back Cover + Spine (0.486") + Front Cover • Gold Baroque Filigree Frame
+          </div>
+        </div>
+
+        <!-- Publishing Specs Badges -->
+        <div class="cover-specs-row">
+          <span class="spec-pill">7.0" × 10.0" Trim</span>
+          <span class="spec-pill">216 Pages (White 50#)</span>
+          <span class="spec-pill">0.486" Spine Width</span>
+          <span class="spec-pill">300 DPI Print Calibrated</span>
+          <a href="https://github.com/om-script/sanskrit-by-architecture/blob/main/amazonkdpBrief.md" target="_blank" class="spec-link">KDP Brief ↗</a>
+        </div>
+      </div>
     </section>
 
     <!-- Quick Stats -->
@@ -1096,6 +1297,22 @@
       navigator.clipboard.writeText(p.body).then(() => {
         showToast("Formatted Markdown copied to clipboard!");
       });
+    }
+
+    function switchCoverView(mode) {
+      const buttons = document.querySelectorAll('.cover-tab-btn');
+      const panels = document.querySelectorAll('.cover-view-panel');
+      
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      if (mode === 'front') {
+        buttons[0].classList.add('active');
+        document.getElementById('cover-view-front').classList.add('active');
+      } else {
+        buttons[1].classList.add('active');
+        document.getElementById('cover-view-wrap').classList.add('active');
+      }
     }
   </script>
 </body>

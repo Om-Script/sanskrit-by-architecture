@@ -1,0 +1,38 @@
+# Build artifacts
+*.aux
+*.log
+*.toc
+*.out
+*.tmp
+*.zip
+*.jfif
+*.exe
+
+# TeX & intermediate PDF tests
+test*.tex
+test*.pdf
+temp_*.tex
+Ch*.aux
+Ch*.log
+Ch*.tex
+
+# Temporary crop images in root
+*crop*.png
+*zone*.png
+findings*.txt
+corrupted_words.txt
+cmp_*.png
+badge_*.png
+arrow_*.png
+plaque_*.png
+spine_*.png
+bc_*.png
+
+# Metadata and editor dirs
+.metals/
+.bsp/
+.scala-build/
+.vscode/
+.agents/
+mwxml/
+Libertinus/
