@@ -86,7 +86,7 @@ fc_final_300dpi = fc_cleaned.resize((2100, 3000), Image.Resampling.LANCZOS)
 fc_final_300dpi.save(os.path.join(out_dir, "Ramayana_Front_Cover_300DPI.png"), dpi=(300, 300))
 
 # ==============================================================================
-# 2. FULL WRAP COMPOSITE WITH SURGICAL TYPO PATCHES & CLEAN SPINE
+# 2. FULL WRAP COMPOSITE WITH SURGICAL TYPO PATCHES & BRAND NEW SPINE
 # ==============================================================================
 master_wrap = im_wrap.copy()
 wrap_draw = ImageDraw.Draw(master_wrap)
@@ -113,7 +113,7 @@ wrap_draw.point([(289, 287), (290, 287), (291, 287), (292, 287)], fill=gold_p3)
 wrap_draw.point([(288, 288), (289, 288), (292, 288), (293, 288)], fill=gold_p3)
 
 # C. Back cover: Bullet 3 'arhitrary' -> 'arbitrary'
-# Close bowl of 'h' at y=530..531, x=324..328 to form 'b'
+# Close bowl of 'h' at y=530..531, x=324..328 to form solid Roman 'b'
 gold_b3 = (230, 225, 210)
 for x in range(324, 329):
     master_wrap.putpixel((x, 531), gold_b3)
@@ -124,40 +124,86 @@ for y in range(526, 531):
 # D. Paste the clean Front Cover onto the wrap
 master_wrap.paste(fc_cleaned, (525, 0))
 
-# E. Spine: Clean Subtitle + Separator Diamond + Author
-spine_bg = master_wrap.getpixel((505, 362))
-wrap_draw.rectangle([489, 365, 524, 695], fill=spine_bg)
+# E. BRAND NEW SPINE REGENERATION (x = 488..525, y = 0..718)
+# Create a pristine horizontal spine strip (718 x 37 px) and rotate 270 deg
+strip_w = 718
+strip_h = 37
 
-f_sub = get_font(["LibertinusSerif-Semibold.otf", "georgia.ttf", "times.ttf"], 11)
-f_auth = get_font(["LibertinusSerif-Bold.otf", "georgiab.ttf", "timesbd.ttf"], 12)
+spine_img = Image.new("RGBA", (strip_w, strip_h), (24, 22, 28, 255))
+s_draw = ImageDraw.Draw(spine_img)
 
-strip_w = 325
-strip_h = 34
-spine_layer = Image.new("RGBA", (strip_w, strip_h), (0, 0, 0, 0))
-s_draw = ImageDraw.Draw(spine_layer)
+# Outer gold borders along spine hinges
+s_draw.line([(0, 1), (strip_w, 1)], fill=(150, 120, 70), width=1)
+s_draw.line([(0, strip_h - 2), (strip_w, strip_h - 2)], fill=(150, 120, 70), width=1)
+# Inner subtle hairline
+s_draw.line([(0, 3), (strip_w, 3)], fill=(70, 55, 35), width=1)
+s_draw.line([(0, strip_h - 4), (strip_w, strip_h - 4)], fill=(70, 55, 35), width=1)
 
+f_om = get_font(["Nirmala.ttf", "Shobhika-Bold.otf", "arial.ttf"], 15)
+f_title = get_font(["LibertinusSerif-Bold.otf", "georgiab.ttf", "timesbd.ttf"], 13)
+f_sub = get_font(["LibertinusSerif-Semibold.otf", "georgia.ttf", "times.ttf"], 10)
+f_auth = get_font(["LibertinusSerif-Bold.otf", "georgiab.ttf", "timesbd.ttf"], 11)
+
+gold_bright = (235, 218, 175, 255)
+gold_warm = (218, 185, 115, 255)
+gold_dark = (160, 130, 75, 255)
+shadow_col = (10, 8, 12, 230)
+
+# 1. Sacred Om ॐ at top
+om_text = "ॐ"
+om_x = 26
+om_y = (strip_h - 18) // 2
+s_draw.text((om_x + 1, om_y + 1), om_text, font=f_om, fill=shadow_col)
+s_draw.text((om_x, om_y), om_text, font=f_om, fill=gold_warm)
+
+# Top divider
+d1_x = 52
+s_draw.line([(d1_x, 8), (d1_x, strip_h - 8)], fill=gold_dark, width=1)
+s_draw.polygon([(d1_x, strip_h//2 - 2), (d1_x + 2, strip_h//2), (d1_x, strip_h//2 + 2), (d1_x - 2, strip_h//2)], fill=gold_warm)
+
+# 2. Main Title: "SANSKRIT BY ARCHITECTURE" (completely intact, zero cutoff)
+title_text = "SANSKRIT BY ARCHITECTURE"
+title_w = s_draw.textlength(title_text, font=f_title)
+title_x = 68
+title_y = (strip_h - 14) // 2
+s_draw.text((title_x + 1, title_y + 1), title_text, font=f_title, fill=shadow_col)
+s_draw.text((title_x, title_y), title_text, font=f_title, fill=gold_bright)
+
+# Middle separator diamond
+d2_x = title_x + int(title_w) + 20
+d2_y = strip_h // 2
+s_draw.polygon([(d2_x, d2_y - 3), (d2_x + 3, d2_y), (d2_x, d2_y + 3), (d2_x - 3, d2_y)], fill=gold_warm)
+
+# 3. Subtitle: "DECODING THE RĀMĀYAṆA"
 sub_text = "DECODING THE RĀMĀYAṆA"
 sub_w = s_draw.textlength(sub_text, font=f_sub)
-sub_x = 10
-sub_y = (strip_h - 12) // 2
-
-s_draw.text((sub_x + 1, sub_y + 1), sub_text, font=f_sub, fill=(30, 25, 20, 220))
+sub_x = d2_x + 20
+sub_y = (strip_h - 11) // 2
+s_draw.text((sub_x + 1, sub_y + 1), sub_text, font=f_sub, fill=shadow_col)
 s_draw.text((sub_x, sub_y), sub_text, font=f_sub, fill=(225, 220, 205, 255))
 
-d_cx = sub_x + int(sub_w) + 16
-d_cy = strip_h // 2
-s_draw.polygon([(d_cx, d_cy - 3), (d_cx + 3, d_cy), (d_cx, d_cy + 3), (d_cx - 3, d_cy)], fill=(218, 182, 105, 255))
+# Third separator diamond
+d3_x = sub_x + int(sub_w) + 20
+d3_y = strip_h // 2
+s_draw.polygon([(d3_x, d3_y - 3), (d3_x + 3, d3_y), (d3_x, d3_y + 3), (d3_x - 3, d3_y)], fill=gold_warm)
 
+# 4. Author: "TIMOTHY A. GEORGE"
 auth_text = "TIMOTHY A. GEORGE"
 auth_w = s_draw.textlength(auth_text, font=f_auth)
-auth_x = d_cx + 16
-auth_y = (strip_h - 13) // 2
+auth_x = d3_x + 20
+auth_y = (strip_h - 12) // 2
+s_draw.text((auth_x + 1, auth_y + 1), auth_text, font=f_auth, fill=shadow_col)
+s_draw.text((auth_x, auth_y), auth_text, font=f_auth, fill=gold_warm)
 
-s_draw.text((auth_x + 1, auth_y + 1), auth_text, font=f_auth, fill=(30, 25, 20, 220))
-s_draw.text((auth_x, auth_y), auth_text, font=f_auth, fill=(218, 182, 105, 255))
+# Bottom divider
+d4_x = auth_x + int(auth_w) + 16
+if d4_x < strip_w - 12:
+    s_draw.line([(d4_x, 8), (d4_x, strip_h - 8)], fill=gold_dark, width=1)
+    s_draw.polygon([(d4_x, strip_h//2 - 2), (d4_x + 2, strip_h//2), (d4_x, strip_h//2 + 2), (d4_x - 2, strip_h//2)], fill=gold_warm)
 
-spine_vert = spine_layer.rotate(270, expand=True)
-master_wrap.paste(spine_vert, (490, 368), spine_vert)
+# Rotate 270 deg and paste onto the wrap covering x=488..525, y=0..718
+spine_vert = spine_img.rotate(270, expand=True)
+master_wrap.paste(spine_vert, (488, 0), spine_vert)
 
 # F. Save All Deliverables
 master_wrap.save(os.path.join(out_dir, "Ramayana_Wrap_Cleaned_Native.png"), dpi=(300, 300))
