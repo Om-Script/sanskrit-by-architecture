@@ -28,6 +28,9 @@ plaque_*.png
 spine_*.png
 bc_*.png
 
+# Ensure all docs webpage assets are tracked
+!docs/**
+
 # Metadata and editor dirs
 .metals/
 .bsp/

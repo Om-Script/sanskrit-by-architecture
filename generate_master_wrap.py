@@ -113,13 +113,17 @@ wrap_draw.point([(289, 287), (290, 287), (291, 287), (292, 287)], fill=gold_p3)
 wrap_draw.point([(288, 288), (289, 288), (292, 288), (293, 288)], fill=gold_p3)
 
 # C. Back cover: Bullet 3 'arhitrary' -> 'arbitrary'
-# Close bowl of 'h' at y=530..531, x=324..328 to form solid Roman 'b'
-gold_b3 = (230, 225, 210)
-for x in range(324, 329):
-    master_wrap.putpixel((x, 531), gold_b3)
-    master_wrap.putpixel((x, 530), gold_b3)
-for y in range(526, 531):
-    master_wrap.putpixel((328, y), gold_b3)
+# Close bowl of 'h' at x=315..318, y=530..531 to form crisp Roman 'b'
+gold_b3 = (220, 215, 200)
+master_wrap.putpixel((315, 530), (200, 195, 180))
+master_wrap.putpixel((316, 530), gold_b3)
+master_wrap.putpixel((317, 530), gold_b3)
+master_wrap.putpixel((318, 530), gold_b3)
+
+master_wrap.putpixel((315, 531), (170, 165, 150))
+master_wrap.putpixel((316, 531), gold_b3)
+master_wrap.putpixel((317, 531), gold_b3)
+master_wrap.putpixel((318, 531), (200, 195, 180))
 
 # D. Paste the clean Front Cover onto the wrap
 master_wrap.paste(fc_cleaned, (525, 0))
